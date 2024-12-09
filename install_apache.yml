@@ -8,7 +8,7 @@
     apt:
       name: apache2
       state: latest
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution in ["pino", "Ubuntu"]
 
   - name: add php support for apache
     apt:

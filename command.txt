@@ -1,0 +1,30 @@
+ls .sssudo apt install openssh-server
+ip a
+ssh <username>@<ip>
+ssh-keygen -t ed25519 -C "ansible default"
+ssh-keygen -t ed25519 -C "root default"
+	passphrase: 
+
+ssh-copy-id -i /.ssh/id_xyz.pub <remote-ip>
+id_ed25519.pub
+ssh-copy-id -i /.ssh/id_ed25519.pub <remote-ip>
+
+
+ssh-keygen -t ed25519 -C "ansible"
+ssh-copy-id -i /.ssh/ansible.pub 
+
+ansible all --key-file /.ssh/ansible -i inventory -m ping
+ansible all -m ping
+ansible all --list-hosts
+ansible all -m gather_facts
+ansible all -m gather_facts --limit 192.168.8.74
+ansible all -m apt -a update_cache=true
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+ansible all -m apt -a name=vim-nox --become --ask-become-pass
+ansible all -m apt -a name=tmux --become --ask-become-pass
+ansible all -m apt -a "name=snap state=latest" --become --ask-become-pass
+ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
+ansible-playbook --ask-become-pass install_apache.yml
+ansible-playbook --list-tags site_with_tags.yml
+ansible-playbook --tags ubuntu --ask-become-pass site_with_tags.yml
+ansible-playbook --tags "ubuntu,db" --ask-become-pass site_with_tags.yml
